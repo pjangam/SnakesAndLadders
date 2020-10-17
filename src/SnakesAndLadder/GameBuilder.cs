@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace SnakesAndLadders
@@ -5,7 +6,7 @@ namespace SnakesAndLadders
     public class GameBuilder
     {
         private List<Player> _players = new List<Player>();
-        private Dice _dice = new Dice();
+        private IDice _dice = new Dice();
         public GameBuilder()
         {
         }
@@ -20,6 +21,11 @@ namespace SnakesAndLadders
         public Game Build()
         {
             return new Game(_players, _dice); //send player to ctor
+        }
+
+        public void SetDice(IDice dice)
+        {
+            _dice = dice;
         }
     }
 }

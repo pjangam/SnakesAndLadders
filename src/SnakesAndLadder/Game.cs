@@ -6,9 +6,9 @@ namespace SnakesAndLadders
     public class Game
     {
         public List<Player> Players { get; }
-        private Dice _dice;
+        private IDice _dice;
 
-        public Game(List<Player> players, Dice dice)
+        public Game(List<Player> players, IDice dice)
         {
             Players = players;
             _dice = dice;
@@ -17,7 +17,8 @@ namespace SnakesAndLadders
         public int Play()
         {
             var diceThrow = _dice.Throw();
-            Players[0].Place += diceThrow;
+            if (Players[0].Place + diceThrow <= 100)
+                Players[0].Place += diceThrow;
             return diceThrow;
         }
     }

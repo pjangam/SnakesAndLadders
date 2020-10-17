@@ -3,7 +3,12 @@ using System.Collections.Generic;
 
 namespace SnakesAndLadders
 {
-    public class Dice
+    public interface IDice
+    {
+        int Throw();
+    }
+
+    public class Dice : IDice
     {
         private Random _random = new Random();
 
