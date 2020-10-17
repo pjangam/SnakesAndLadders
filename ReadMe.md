@@ -1,5 +1,7 @@
 # Snakes and Ladders
 
+[![Build Status](https://travis-ci.org/pjangam/SnakesAndLadders.svg?branch=master)](https://travis-ci.org/pjangam/SnakesAndLadders) [![Coverage Status](https://coveralls.io/repos/github/pjangam/SnakesAndLadders/badge.svg?branch=master)](https://coveralls.io/github/pjangam/SnakesAndLadders?branch=master)
+
 The famous game of snakes and ladder.
 
 ### Tech stack:
@@ -12,8 +14,8 @@ The famous game of snakes and ladder.
 
 On mac/linux
 
-`make run`
+`make`
 
 On windows
 
-`dotnet run`
+`dotnet test`

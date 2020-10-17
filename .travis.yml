@@ -1,0 +1,14 @@
+language: csharp
+mono: none
+dotnet: 3.1
+before_install:
+  # explicitly install other targeted SDKs side by side
+  - sudo apt-get install dotnet-sdk-2.1
+solution: SnakesAndLadders.sln
+install:
+  - dotnet restore SnakesAndLadders.sln
+script:
+  - make test
+  - dotnet tool install --global coveralls.net --version 1.0.0
+  - export PATH="$PATH:/home/travis/.dotnet/tools"
+  - csmacnz.Coveralls --opencover -i test/SnakesAndLadders.Tests/TestResults/**/coverage.opencover.xml --useRelativePaths --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID  --serviceName travis-ci
