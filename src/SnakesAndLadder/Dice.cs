@@ -12,9 +12,6 @@ namespace SnakesAndLadders
         {
         }
 
-        public int Throw()
-        {
-            return _random.Next(6) + 1;
-        }
+        public int Throw() => _random.Next(6) + 1;
     }
 }

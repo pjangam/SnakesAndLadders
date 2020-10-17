@@ -8,7 +8,7 @@ namespace SnakesAndLadders.Tests
     public class DiceFixture
     {
         [Fact]
-        public void GivenNewDice_WhenThrownHundredTimes_ThenGetsDifferntCountWithinOneAndSix()
+        public void GivenNewDice_WhenThrownHundredTimes_ThenGetsDifferentCountWithinOneAndSix()
         {
             //given 
             var dice = new Dice();
