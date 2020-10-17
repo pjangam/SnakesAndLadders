@@ -5,27 +5,25 @@ namespace SnakesAndLadders
 {
     public class GameBuilder
     {
-        private List<Player> _players = new List<Player>();
         private IDice _dice = new Dice();
+        private List<Player> _players = new List<Player>();
+        private List<Snake> Snakes = new List<Snake>();
+
         public GameBuilder()
         {
         }
 
-        public Player AddPlayer()
+        public Player AddPlayer(Player player)
         {
-            var player = new Player();
             _players.Add(player);
             return player;
         }
 
-        public Game Build()
-        {
-            return new Game(_players, _dice); //send player to ctor
-        }
+        public Game Build() => new Game(_players, _dice, new Board(Snakes)); //send player to ctor
 
-        public void SetDice(IDice dice)
-        {
-            _dice = dice;
-        }
+        public void AddSnake(Snake snake) => Snakes.Add(snake);
+
+        public void SetDice(IDice dice) => _dice = dice;
     }
+
 }
