@@ -4,11 +4,11 @@ namespace SnakesAndLadders
 {
     public class Board
     {
-        public Board(List<Snake> snakes)
+        public Board(IEnumerable<Snake> snakes)
         {
             Snakes = snakes;
         }
 
-        public List<Snake> Snakes { get; }
+        public IEnumerable<Snake> Snakes { get; }
     }
 }

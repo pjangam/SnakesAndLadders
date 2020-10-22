@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
@@ -31,7 +32,7 @@ namespace SnakesAndLadders.Tests
             //when 
             var diceThrow = game.Play();
             //then 
-            game.Players[0].Place.Should().Be(diceThrow + 1);
+            game.Players.ToList()[0].Place.Should().Be(diceThrow + 1);
         }
 
         [Fact]
@@ -53,7 +54,7 @@ namespace SnakesAndLadders.Tests
             game.Play();
 
             //then 
-            game.Players[0].Place.Should().Be(74);
+            game.Players.ToList()[0].Place.Should().Be(74);
         }
 
         [Fact]
@@ -76,7 +77,7 @@ namespace SnakesAndLadders.Tests
             game.Play();
 
             //then 
-            game.Players[0].Place.Should().Be(97);
+            game.Players.ToList()[0].Place.Should().Be(97);
         }
 
         [Fact]
@@ -100,9 +101,8 @@ namespace SnakesAndLadders.Tests
             var diceThrow = game.Play();
 
             //then 
-            game.Players[0].Place.Should().Be(7);
+            game.Players.ToList()[0].Place.Should().Be(7);
         }
-
     }
 
 }
