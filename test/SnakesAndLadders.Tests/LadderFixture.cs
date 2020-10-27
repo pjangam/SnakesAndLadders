@@ -8,7 +8,7 @@ namespace SnakesAndLadders.Tests
     public class LadderFixture
     {
         [Fact]
-        public async Task GivenGame_WhenUserCreateLadderWithValidValues_ThenLadderInstanceCreated()
+        public void GivenGame_WhenUserCreateLadderWithValidValues_ThenLadderInstanceCreated()
         {
             //given 
 
@@ -20,7 +20,7 @@ namespace SnakesAndLadders.Tests
         }
 
         [Fact]
-        public async Task GivenLadderStartLow_WhenUserCreateLadder_ThenLadderInstanceCreated()
+        public void GivenLadderStartLow_WhenUserCreateLadder_ThenLadderInstanceCreated()
         {
             //given 
 
@@ -33,7 +33,7 @@ namespace SnakesAndLadders.Tests
         }
 
         [Fact]
-        public async Task GivenEndAboveBoard_WhenUserCreateLadder_ThenLadderInstanceCreated()
+        public void GivenEndAboveBoard_WhenUserCreateLadder_ThenLadderInstanceCreated()
         {
             //given 
 
@@ -46,7 +46,7 @@ namespace SnakesAndLadders.Tests
         }
 
         [Fact]
-        public async Task GivenInverseLadder_WhenUserCreateLadder_ThenLadderInstanceCreated()
+        public void GivenInverseLadder_WhenUserCreateLadder_ThenLadderInstanceCreated()
         {
             //given 
 

@@ -106,7 +106,7 @@ namespace SnakesAndLadders.Tests
 
 
         [Fact]
-        public async Task GivenPlayerHitsGreensSnakes_WhenPlayerAgainHitsSameSnake_ThenSnakeIsPowerless()
+        public void GivenPlayerHitsGreensSnakes_WhenPlayerAgainHitsSameSnake_ThenSnakeIsPowerless()
         {
             //given 
             var gameBuilder = new GameBuilder();
@@ -131,7 +131,7 @@ namespace SnakesAndLadders.Tests
         }
 
         [Fact]
-        public async Task GivenPrimeNumberRuleApplied_WhenPlayerLandsOnPrimeNumber_ThenPlayerSkipsATurn()
+        public void GivenPrimeNumberRuleApplied_WhenPlayerLandsOnPrimeNumber_ThenPlayerSkipsATurn()
         {
             //given 
             var gameBuilder = new GameBuilder();
