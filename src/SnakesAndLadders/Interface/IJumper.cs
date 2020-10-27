@@ -2,8 +2,8 @@
 {
     public interface IJumper
     {
-        int Head { get; }
-        int Tail { get; }
+        int Start { get; }
+        int End { get; }
 
         int Jump();
     }

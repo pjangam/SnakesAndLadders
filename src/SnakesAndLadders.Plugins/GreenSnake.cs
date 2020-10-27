@@ -5,14 +5,14 @@ namespace SnakesAndLadders
     public class GreenSnake : IJumper
     {
         private bool hasEaten = false;
-        public int Head { get; }
+        public int Start { get; }
 
-        public int Tail { get; }
+        public int End { get; }
 
         public GreenSnake(int head, int tail)
         {
-            Head = head;
-            Tail = tail;
+            Start = head;
+            End = tail;
         }
 
         public int Jump()
@@ -20,9 +20,9 @@ namespace SnakesAndLadders
             if (!hasEaten)
             {
                 hasEaten = true;
-                return Tail;
+                return End;
             }
-            return Head;
+            return Start;
         }
     }
 }

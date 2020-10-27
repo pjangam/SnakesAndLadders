@@ -23,7 +23,7 @@ namespace SnakesAndLadders
             return nextPlace;
         }
 
-        private IJumper GetJumper(int place) => Snakes.FirstOrDefault(s => s.Head == place);
+        private IJumper GetJumper(int place) => Snakes.FirstOrDefault(s => s.Start == place);
         private bool goingOutOfBoard(int nextPosition) => nextPosition > 100;
     }
 }
