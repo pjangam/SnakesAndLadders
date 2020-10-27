@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
+using SnakesAndLadder;
 using Xunit;
 
 namespace SnakesAndLadders.Tests
@@ -31,7 +33,7 @@ namespace SnakesAndLadders.Tests
             //when 
             var diceThrow = game.Play();
             //then 
-            game.Players[0].Place.Should().Be(diceThrow + 1);
+            game.Players.ToList()[0].Place.Should().Be(diceThrow + 1);
         }
 
         [Fact]
@@ -53,7 +55,7 @@ namespace SnakesAndLadders.Tests
             game.Play();
 
             //then 
-            game.Players[0].Place.Should().Be(74);
+            game.Players.ToList()[0].Place.Should().Be(74);
         }
 
         [Fact]
@@ -76,7 +78,7 @@ namespace SnakesAndLadders.Tests
             game.Play();
 
             //then 
-            game.Players[0].Place.Should().Be(97);
+            game.Players.ToList()[0].Place.Should().Be(97);
         }
 
         [Fact]
@@ -100,9 +102,34 @@ namespace SnakesAndLadders.Tests
             var diceThrow = game.Play();
 
             //then 
-            game.Players[0].Place.Should().Be(7);
+            game.Players.ToList()[0].Place.Should().Be(7);
         }
 
+
+        [Fact]
+        public async Task GivenPlayerHitsGreensSnakes_WhenPlayerAgainHitsSameSnake_ThenSnakeIsPowerless()
+        {
+            //given 
+            var gameBuilder = new GameBuilder();
+            var player = new Player
+            {
+                Place = 10
+            };
+            gameBuilder.AddPlayer(player);
+            var snake = new GreenSnake(14, 10);
+            gameBuilder.AddSnake(snake);
+            var dice = new Mock<IDice>();
+            dice.Setup(d => d.Throw()).Returns(4);
+            gameBuilder.SetDice(dice.Object);
+            var game = gameBuilder.Build();
+            var diceThrow = game.Play();
+
+            //when 
+            diceThrow = game.Play();
+
+            //then 
+            player.Place.Should().Be(14);
+        }
     }
 
 }

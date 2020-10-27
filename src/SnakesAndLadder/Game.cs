@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SnakesAndLadders
 {
@@ -7,7 +8,7 @@ namespace SnakesAndLadders
     {
         private IDice _dice;
 
-        public Game(List<Player> players, IDice dice, Board board)
+        public Game(IList<Player> players, IDice dice, Board board)
         {
             _dice = dice;
             Players = players;
@@ -15,7 +16,7 @@ namespace SnakesAndLadders
 
             CurrentPlayer = players[0];
         }
-        public List<Player> Players { get; }
+        public IEnumerable<Player> Players { get; }
         public Board Board { get; }
         public Player CurrentPlayer { get; }
 
@@ -30,11 +31,11 @@ namespace SnakesAndLadders
             var snake = GetSnake(CurrentPlayer.Place);
             if (snake != null)
             {
-                CurrentPlayer.Place = snake.Tail;
+                CurrentPlayer.Place = snake.Eat();
             }
             return diceThrow;
         }
 
-        private Snake GetSnake(int place) => Board.Snakes.Find(s => s.Head == place);
+        private ISnake GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Head == place);
     }
 }
