@@ -2,46 +2,43 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SnakesAndLadders
+namespace SnakesAndLadder
 {
     public class Game
     {
         private IDice _dice;
-        private IList<Player> _players;
+        private CircularLinkedList<Player> _players;
         private IGameStrategy _gameStrategy;
 
         public Game(IList<Player> players, IDice dice, Board board, IGameStrategy gameStrategy)
         {
             _dice = dice;
-            _players = players;
-            Board = board;
-            CurrentPlayer = _players[0];
+            _players = new CircularLinkedList<Player>(players);
             _gameStrategy = gameStrategy;
+
+            Board = board;
+            Players = players;
         }
+
         public IEnumerable<Player> Players
         {
-            get
-            {
-                return _players;
-            }
+            get;
         }
         public Board Board { get; }
         public Player CurrentPlayer
         {
-            get;
-            private set;
+            get => _players.Current;
         }
 
         public int Play()
         {
             var diceThrow = _dice.Throw();
             CurrentPlayer.Place = Board.GetNextPosition(diceThrow, CurrentPlayer.Place);
-            CurrentPlayer = _gameStrategy.GetNextPlayer();
+            _gameStrategy.GetNextPlayer(_players);
             return diceThrow;
         }
 
-
-
         private ISnake GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Head == place);
+
     }
 }

@@ -1,4 +1,4 @@
-namespace SnakesAndLadders
+namespace SnakesAndLadder
 {
     public interface IDice
     {

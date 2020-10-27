@@ -1,6 +1,6 @@
 using System;
 
-namespace SnakesAndLadders
+namespace SnakesAndLadder
 {
     public class CrookedDice : IDice
     {

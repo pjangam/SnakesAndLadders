@@ -7,7 +7,7 @@ using Moq;
 using SnakesAndLadder;
 using Xunit;
 
-namespace SnakesAndLadders.Tests
+namespace SnakesAndLadder.Tests
 {
     public class SnakeLadderFixture
     {
@@ -131,8 +131,8 @@ namespace SnakesAndLadders.Tests
             player.Place.Should().Be(14);
         }
 
-        //[Fact]
-        public async Task GivenPlayer_WhenLandsOnPrimeNumber_ThenPlayerSkipsATurn()
+        [Fact]
+        public async Task GivenPrimeNumberRuleApplied_WhenPlayerLandsOnPrimeNumber_ThenPlayerSkipsATurn()
         {
             //given 
             var gameBuilder = new GameBuilder();
@@ -149,13 +149,14 @@ namespace SnakesAndLadders.Tests
             var dice = new Mock<IDice>();
             dice.Setup(d => d.Throw()).Returns(3);
             gameBuilder.SetDice(dice.Object);
+            //gameBuilder.SetStrategy(new SkipOnPrimeNumberStrategy());
             var game = gameBuilder.Build();
             //when
             game.CurrentPlayer.Name.Should().Be(player1.Name);
             game.Play();
             game.CurrentPlayer.Name.Should().Be(player2.Name);
             game.Play();
-            //game.CurrentPlayer.Should().Be(player2);
+            game.CurrentPlayer.Name.Should().Be(player2.Name);
             // game.Play();
             // game.CurrentPlayer.Should().Be(player1);
             //then 

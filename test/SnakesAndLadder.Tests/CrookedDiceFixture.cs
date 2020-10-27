@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
-namespace SnakesAndLadders.Tests
+namespace SnakesAndLadder.Tests
 {
     public class CrookedDiceFixture
     {

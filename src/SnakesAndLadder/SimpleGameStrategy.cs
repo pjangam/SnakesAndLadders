@@ -1,24 +1,17 @@
 using System.Collections.Generic;
 
-namespace SnakesAndLadders
+namespace SnakesAndLadder
 {
     public class SimpleGameStrategy : IGameStrategy
     {
-        private int _currentPlayerIndex = 0;
-        private IList<Player> _players;
-        public SimpleGameStrategy(IList<Player> players)
+        public SimpleGameStrategy()
         {
-            _players = players;
         }
 
-        public Player GetNextPlayer()
+        public Player GetNextPlayer(CircularLinkedList<Player> _players)
         {
-            _currentPlayerIndex++;
-            if (_currentPlayerIndex == _players.Count)
-            {
-                _currentPlayerIndex = 0;
-            }
-            return _players[_currentPlayerIndex];
+            _players.MoveNext();
+            return _players.Current;
         }
     }
 }
