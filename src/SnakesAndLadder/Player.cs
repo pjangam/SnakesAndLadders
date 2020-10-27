@@ -1,17 +1,16 @@
+using System;
+
 namespace SnakesAndLadder
 {
 
     public class Player
     {
-        public string Name { get; }
+        public string Id { get; }
 
-        public Player()
-        {
-        }
 
-        public Player(string name)
+        public Player(string id = null)
         {
-            this.Name = name;
+            this.Id = id ?? Guid.NewGuid().ToString();
         }
 
         public int Place { get; set; } = 1;

@@ -136,11 +136,11 @@ namespace SnakesAndLadder.Tests
         {
             //given 
             var gameBuilder = new GameBuilder();
-            var player1 = new Player("player1")
+            var player1 = new Player("p1")
             {
                 Place = 10
             };
-            var player2 = new Player("player2")
+            var player2 = new Player("p2")
             {
                 Place = 11
             };
@@ -149,16 +149,16 @@ namespace SnakesAndLadder.Tests
             var dice = new Mock<IDice>();
             dice.Setup(d => d.Throw()).Returns(3);
             gameBuilder.SetDice(dice.Object);
-            //gameBuilder.SetStrategy(new SkipOnPrimeNumberStrategy());
+            gameBuilder.SetStrategy(new SkipOnPrimeNumberStrategy(new List<Player> { player1, player2 }));
             var game = gameBuilder.Build();
             //when
-            game.CurrentPlayer.Name.Should().Be(player1.Name);
+            game.CurrentPlayer.Id.Should().Be(player1.Id, "First player at game start");
             game.Play();
-            game.CurrentPlayer.Name.Should().Be(player2.Name);
+            game.CurrentPlayer.Id.Should().Be(player2.Id, "Player2 after player1");
             game.Play();
-            game.CurrentPlayer.Name.Should().Be(player2.Name);
-            // game.Play();
-            // game.CurrentPlayer.Should().Be(player1);
+            game.CurrentPlayer.Id.Should().Be(player2.Id, "Player1 is on skip");
+            game.Play();
+            game.CurrentPlayer.Id.Should().Be(player1.Id, "player1 after player2");
             //then 
         }
     }

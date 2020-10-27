@@ -4,9 +4,6 @@ namespace SnakesAndLadder
 {
     public class SimpleGameStrategy : IGameStrategy
     {
-        public SimpleGameStrategy()
-        {
-        }
 
         public Player GetNextPlayer(CircularLinkedList<Player> _players)
         {
