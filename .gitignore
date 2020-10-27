@@ -32,3 +32,4 @@ msbuild.wrn
 .vs/
 TestResults/
 coveragereport/
+User.mk

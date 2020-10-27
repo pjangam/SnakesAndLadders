@@ -104,6 +104,30 @@ namespace SnakesAndLadders.Tests
             game.Players.ToList()[0].Place.Should().Be(7);
         }
 
+        [Fact]
+        public void GivenGameHasLadderAtFourteen_WhenUserReachesFourteen_ThenUserShouldMoveToTwentySeven()
+        {
+            //given 
+            var gameBuilder = new GameBuilder();
+            var player = new Player
+            {
+                Place = 10
+            };
+            gameBuilder.AddPlayer(player);
+            var ladder = new Ladder(14, 27);
+            gameBuilder.AddJumper(ladder);
+            var dice = new Mock<IDice>();
+            dice.Setup(d => d.Throw()).Returns(4);
+            gameBuilder.SetDice(dice.Object);
+            var game = gameBuilder.Build();
+
+            //when 
+            var diceThrow = game.Play();
+
+            //then 
+            game.Players.ToList()[0].Place.Should().Be(27);
+        }
+
 
         [Fact]
         public void GivenPlayerHitsGreensSnakes_WhenPlayerAgainHitsSameSnake_ThenSnakeIsPowerless()

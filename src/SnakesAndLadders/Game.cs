@@ -39,7 +39,5 @@ namespace SnakesAndLadders
             return diceThrow;
         }
 
-        private IJumper GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Start == place);
-
     }
 }
