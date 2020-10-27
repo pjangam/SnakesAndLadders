@@ -4,10 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
-using SnakesAndLadder;
 using Xunit;
 
-namespace SnakesAndLadder.Tests
+namespace SnakesAndLadders.Tests
 {
     public class SnakeLadderFixture
     {

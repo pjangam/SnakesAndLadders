@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SnakesAndLadder
+namespace SnakesAndLadders
 {
     public class CircularLinkedList<T> : IEnumerator<T>
     {

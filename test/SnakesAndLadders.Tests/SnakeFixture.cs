@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
 
-namespace SnakesAndLadder.Tests
+namespace SnakesAndLadders.Tests
 {
     public class SnakeFixture
     {

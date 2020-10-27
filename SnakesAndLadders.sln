@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7CBB784F-5722-4E03-959B-8C59853E0424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakesAndLadder", "src\SnakesAndLadder\SnakesAndLadder.csproj", "{D06C010E-767F-482C-AC3F-068AFC21E51A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakesAndLadders", "src\SnakesAndLadders\SnakesAndLadders.csproj", "{D06C010E-767F-482C-AC3F-068AFC21E51A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D3BABE8F-775F-43CE-9B5F-316AC810724E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakesAndLadder.Tests", "test\SnakesAndLadder.Tests\SnakesAndLadder.Tests.csproj", "{05FDCEC1-9552-4759-BABC-B96BDC0645FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakesAndLadders.Tests", "test\SnakesAndLadders.Tests\SnakesAndLadders.Tests.csproj", "{05FDCEC1-9552-4759-BABC-B96BDC0645FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

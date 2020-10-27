@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SnakesAndLadder
+namespace SnakesAndLadders
 {
 
     public class Dice : IDice

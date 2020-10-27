@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SnakesAndLadder
+namespace SnakesAndLadders
 {
     public class SimpleGameStrategy : IGameStrategy
     {

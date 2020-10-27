@@ -1,6 +1,6 @@
 using System;
 
-namespace SnakesAndLadder
+namespace SnakesAndLadders
 {
 
     public class Snake : ISnake
