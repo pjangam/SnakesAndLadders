@@ -8,7 +8,7 @@ namespace SnakesAndLadders
     {
         private IDice _dice = new Dice();
         private List<Player> _players = new List<Player>();
-        private List<ISnake> Snakes = new List<ISnake>();
+        private List<IJumper> Snakes = new List<IJumper>();
         private IGameStrategy _strategy = new SimpleGameStrategy();
 
         public Game Build() => new Game(_players, _dice, new Board(Snakes), _strategy); //send player to ctor
@@ -18,10 +18,10 @@ namespace SnakesAndLadders
             _players.Add(player);
             return player;
         }
-        public ISnake AddSnake(ISnake snake)
+        public IJumper AddJumper(IJumper jumper)
         {
-            Snakes.Add(snake);
-            return snake;
+            Snakes.Add(jumper);
+            return jumper;
         }
         public IDice SetDice(IDice dice)
         {

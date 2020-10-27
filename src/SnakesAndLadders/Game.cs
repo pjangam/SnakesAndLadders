@@ -4,7 +4,8 @@ using System.Linq;
 
 namespace SnakesAndLadders
 {
-    public class Game
+
+    public class Game : IGame
     {
         private IDice _dice;
         private CircularLinkedList<Player> _players;
@@ -38,7 +39,7 @@ namespace SnakesAndLadders
             return diceThrow;
         }
 
-        private ISnake GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Head == place);
+        private IJumper GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Head == place);
 
     }
 }

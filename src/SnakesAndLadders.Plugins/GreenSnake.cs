@@ -2,7 +2,7 @@ using System;
 
 namespace SnakesAndLadders
 {
-    public class GreenSnake : ISnake
+    public class GreenSnake : IJumper
     {
         private bool hasEaten = false;
         public int Head { get; }
@@ -15,7 +15,7 @@ namespace SnakesAndLadders
             Tail = tail;
         }
 
-        public int Eat()
+        public int Jump()
         {
             if (!hasEaten)
             {

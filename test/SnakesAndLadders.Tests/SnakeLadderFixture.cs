@@ -91,7 +91,7 @@ namespace SnakesAndLadders.Tests
             };
             gameBuilder.AddPlayer(player);
             var snake = new Snake(14, 7);
-            gameBuilder.AddSnake(snake);
+            gameBuilder.AddJumper(snake);
             var dice = new Mock<IDice>();
             dice.Setup(d => d.Throw()).Returns(4);
             gameBuilder.SetDice(dice.Object);
@@ -116,7 +116,7 @@ namespace SnakesAndLadders.Tests
             };
             gameBuilder.AddPlayer(player);
             var snake = new GreenSnake(14, 10);
-            gameBuilder.AddSnake(snake);
+            gameBuilder.AddJumper(snake);
             var dice = new Mock<IDice>();
             dice.Setup(d => d.Throw()).Returns(4);
             gameBuilder.SetDice(dice.Object);
