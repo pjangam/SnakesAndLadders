@@ -130,6 +130,36 @@ namespace SnakesAndLadders.Tests
             //then 
             player.Place.Should().Be(14);
         }
+
+        //[Fact]
+        public async Task GivenPlayer_WhenLandsOnPrimeNumber_ThenPlayerSkipsATurn()
+        {
+            //given 
+            var gameBuilder = new GameBuilder();
+            var player1 = new Player("player1")
+            {
+                Place = 10
+            };
+            var player2 = new Player("player2")
+            {
+                Place = 11
+            };
+            gameBuilder.AddPlayer(player1);
+            gameBuilder.AddPlayer(player2);
+            var dice = new Mock<IDice>();
+            dice.Setup(d => d.Throw()).Returns(3);
+            gameBuilder.SetDice(dice.Object);
+            var game = gameBuilder.Build();
+            //when
+            game.CurrentPlayer.Name.Should().Be(player1.Name);
+            game.Play();
+            game.CurrentPlayer.Name.Should().Be(player2.Name);
+            game.Play();
+            //game.CurrentPlayer.Should().Be(player2);
+            // game.Play();
+            // game.CurrentPlayer.Should().Be(player1);
+            //then 
+        }
     }
 
 }
