@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SnakesAndLadders
 {
@@ -19,7 +20,7 @@ namespace SnakesAndLadders
             return player;
         }
 
-        public Game Build() => new Game(_players, _dice, new Board(Snakes)); //send player to ctor
+        public Game Build() => new Game(_players, _dice, new Board(Snakes), new SimpleGameStrategy(_players.ToList())); //send player to ctor
 
         public void AddSnake(ISnake snake) => Snakes.Add(snake);
 

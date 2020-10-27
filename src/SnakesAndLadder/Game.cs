@@ -7,16 +7,16 @@ namespace SnakesAndLadders
     public class Game
     {
         private IDice _dice;
-        private int _currentPlayerIndex;
         private IList<Player> _players;
+        private IGameStrategy _gameStrategy;
 
-        public Game(IList<Player> players, IDice dice, Board board)
+        public Game(IList<Player> players, IDice dice, Board board, IGameStrategy gameStrategy)
         {
             _dice = dice;
             _players = players;
             Board = board;
-            _currentPlayerIndex = 0;
-            CurrentPlayer = Players.ToList()[0];
+            CurrentPlayer = _players[0];
+            _gameStrategy = gameStrategy;
         }
         public IEnumerable<Player> Players
         {
@@ -36,19 +36,11 @@ namespace SnakesAndLadders
         {
             var diceThrow = _dice.Throw();
             CurrentPlayer.Place = Board.GetNextPosition(diceThrow, CurrentPlayer.Place);
-            CurrentPlayer = GetNextPlayer();
+            CurrentPlayer = _gameStrategy.GetNextPlayer();
             return diceThrow;
         }
 
-        private Player GetNextPlayer()
-        {
-            _currentPlayerIndex++;
-            if (_currentPlayerIndex == Players.Count())
-            {
-                _currentPlayerIndex = 0;
-            }
-            return Players.ToList()[_currentPlayerIndex];
-        }
+
 
         private ISnake GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Head == place);
     }
