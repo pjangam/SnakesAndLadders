@@ -2,7 +2,8 @@ using System;
 
 namespace SnakesAndLadders
 {
-    public class Snake
+
+    public class Snake : ISnake
     {
         public int Head { get; }
         public int Tail { get; }
@@ -15,5 +16,7 @@ namespace SnakesAndLadders
             this.Head = head;
             this.Tail = tail;
         }
+
+        public int Eat() => Tail;
     }
 }

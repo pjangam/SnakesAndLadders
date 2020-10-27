@@ -31,11 +31,11 @@ namespace SnakesAndLadders
             var snake = GetSnake(CurrentPlayer.Place);
             if (snake != null)
             {
-                CurrentPlayer.Place = snake.Tail;
+                CurrentPlayer.Place = snake.Eat();
             }
             return diceThrow;
         }
 
-        private Snake GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Head == place);
+        private ISnake GetSnake(int place) => Board.Snakes.FirstOrDefault(s => s.Head == place);
     }
 }

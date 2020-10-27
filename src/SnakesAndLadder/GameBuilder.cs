@@ -7,7 +7,7 @@ namespace SnakesAndLadders
     {
         private IDice _dice = new Dice();
         private List<Player> _players = new List<Player>();
-        private List<Snake> Snakes = new List<Snake>();
+        private List<ISnake> Snakes = new List<ISnake>();
 
         public GameBuilder()
         {
@@ -21,7 +21,7 @@ namespace SnakesAndLadders
 
         public Game Build() => new Game(_players, _dice, new Board(Snakes)); //send player to ctor
 
-        public void AddSnake(Snake snake) => Snakes.Add(snake);
+        public void AddSnake(ISnake snake) => Snakes.Add(snake);
 
         public void SetDice(IDice dice) => _dice = dice;
     }
