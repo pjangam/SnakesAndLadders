@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
-using SnakesAndLadder;
 using Xunit;
 
 namespace SnakesAndLadders.Tests
@@ -92,7 +91,7 @@ namespace SnakesAndLadders.Tests
             };
             gameBuilder.AddPlayer(player);
             var snake = new Snake(14, 7);
-            gameBuilder.AddSnake(snake);
+            gameBuilder.AddJumper(snake);
             var dice = new Mock<IDice>();
             dice.Setup(d => d.Throw()).Returns(4);
             gameBuilder.SetDice(dice.Object);
@@ -105,9 +104,33 @@ namespace SnakesAndLadders.Tests
             game.Players.ToList()[0].Place.Should().Be(7);
         }
 
+        [Fact]
+        public void GivenGameHasLadderAtFourteen_WhenUserReachesFourteen_ThenUserShouldMoveToTwentySeven()
+        {
+            //given 
+            var gameBuilder = new GameBuilder();
+            var player = new Player
+            {
+                Place = 10
+            };
+            gameBuilder.AddPlayer(player);
+            var ladder = new Ladder(14, 27);
+            gameBuilder.AddJumper(ladder);
+            var dice = new Mock<IDice>();
+            dice.Setup(d => d.Throw()).Returns(4);
+            gameBuilder.SetDice(dice.Object);
+            var game = gameBuilder.Build();
+
+            //when 
+            var diceThrow = game.Play();
+
+            //then 
+            game.Players.ToList()[0].Place.Should().Be(27);
+        }
+
 
         [Fact]
-        public async Task GivenPlayerHitsGreensSnakes_WhenPlayerAgainHitsSameSnake_ThenSnakeIsPowerless()
+        public void GivenPlayerHitsGreensSnakes_WhenPlayerAgainHitsSameSnake_ThenSnakeIsPowerless()
         {
             //given 
             var gameBuilder = new GameBuilder();
@@ -117,7 +140,7 @@ namespace SnakesAndLadders.Tests
             };
             gameBuilder.AddPlayer(player);
             var snake = new GreenSnake(14, 10);
-            gameBuilder.AddSnake(snake);
+            gameBuilder.AddJumper(snake);
             var dice = new Mock<IDice>();
             dice.Setup(d => d.Throw()).Returns(4);
             gameBuilder.SetDice(dice.Object);
@@ -129,6 +152,37 @@ namespace SnakesAndLadders.Tests
 
             //then 
             player.Place.Should().Be(14);
+        }
+
+        [Fact]
+        public void GivenPrimeNumberRuleApplied_WhenPlayerLandsOnPrimeNumber_ThenPlayerSkipsATurn()
+        {
+            //given 
+            var gameBuilder = new GameBuilder();
+            var player1 = new Player("p1")
+            {
+                Place = 10
+            };
+            var player2 = new Player("p2")
+            {
+                Place = 11
+            };
+            gameBuilder.AddPlayer(player1);
+            gameBuilder.AddPlayer(player2);
+            var dice = new Mock<IDice>();
+            dice.Setup(d => d.Throw()).Returns(3);
+            gameBuilder.SetDice(dice.Object);
+            gameBuilder.SetStrategy(new SkipOnPrimeNumberStrategy(new List<Player> { player1, player2 }));
+            var game = gameBuilder.Build();
+            //when
+            game.CurrentPlayer.Id.Should().Be(player1.Id, "First player at game start");
+            game.Play();
+            game.CurrentPlayer.Id.Should().Be(player2.Id, "Player2 after player1");
+            game.Play();
+            game.CurrentPlayer.Id.Should().Be(player2.Id, "Player1 is on skip");
+            game.Play();
+            game.CurrentPlayer.Id.Should().Be(player1.Id, "player1 after player2");
+            //then 
         }
     }
 

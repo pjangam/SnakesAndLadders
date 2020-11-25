@@ -8,7 +8,7 @@ namespace SnakesAndLadders.Tests
     public class SnakeFixture
     {
         [Fact]
-        public async Task GivenGame_WhenUserCreateSnakeWithValidValues_ThenSnakeInstanceCreated()
+        public void GivenGame_WhenUserCreateSnakeWithValidValues_ThenSnakeInstanceCreated()
         {
             //given 
 
@@ -20,7 +20,7 @@ namespace SnakesAndLadders.Tests
         }
 
         [Fact]
-        public async Task GivenSnakeHeadHigh_WhenUserCreateSnake_ThenSnakeInstanceCreated()
+        public void GivenSnakeHeadHigh_WhenUserCreateSnake_ThenSnakeInstanceCreated()
         {
             //given 
 
@@ -33,7 +33,7 @@ namespace SnakesAndLadders.Tests
         }
 
         [Fact]
-        public async Task GivenTailNegative_WhenUserCreateSnake_ThenSnakeInstanceCreated()
+        public void GivenTailNegative_WhenUserCreateSnake_ThenSnakeInstanceCreated()
         {
             //given 
 
@@ -46,7 +46,7 @@ namespace SnakesAndLadders.Tests
         }
 
         [Fact]
-        public async Task GivenInverseSnake_WhenUserCreateSnake_ThenSnakeInstanceCreated()
+        public void GivenInverseSnake_WhenUserCreateSnake_ThenSnakeInstanceCreated()
         {
             //given 
 

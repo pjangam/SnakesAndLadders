@@ -30,5 +30,6 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
-test/SnakesAndLadders.Tests/TestResults/
+TestResults/
 coveragereport/
+User.mk
